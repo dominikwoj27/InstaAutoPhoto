@@ -3,7 +3,7 @@ import getLines
 from instagrapi import Client
 
 client = Client()
-client.login('kkatskii', 'Mietek97')
+client.login('username', 'password')
 
 getLinesFromFile = getLines.GetLinesFromFile()
 listOfAccounts = getLinesFromFile.GetLinesToList()

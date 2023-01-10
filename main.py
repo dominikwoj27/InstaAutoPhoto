@@ -1,8 +1,9 @@
-import getLines
-    
-getLinesFromFile = getLines.GetLinesFromFile()
-listOfAccounts = getLinesFromFile.GetLinesToList()
+import EnterCredentials 
+import InstagrApiClient
 
-for i in range(len(listOfAccounts)):
-    print (listOfAccounts[i])
-    
+#enter credentials
+credentials = EnterCredentials.EnterCredentials.GetCredentialsToList()
+
+#create client for instagrApi, like posts
+instagrApiClient = InstagrApiClient.InstagrApiClient(credentials[0], credentials[1])
+instagrApiClient.LikeProfilesFromFile(10, 1)

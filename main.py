@@ -1,20 +1,9 @@
-import time
-import getLines
-from instagrapi import Client
+import EnterCredentials 
+import InstagrApiClient
 
-client = Client()
-client.login('username', 'password')
+#enter credentials
+credentials = EnterCredentials.EnterCredentials.GetCredentialsToList()
 
-getLinesFromFile = getLines.GetLinesFromFile()
-listOfAccounts = getLinesFromFile.GetLinesToList()
-
-for account in range(len(listOfAccounts)):
-    print('starting liking pics of account: ', listOfAccounts[account])
-    userId = client.user_id_from_username(listOfAccounts[account])
-    userMediasList = client.user_medias(userId, 10, 1)
-    
-    for item in range(len(userMediasList)):
-        client.media_like(userMediasList[item].id)
-        print('liked image with caption:', userMediasList[item].caption_text)
-        time.sleep(1)
-    
+#create client for instagrApi, like posts
+instagrApiClient = InstagrApiClient.InstagrApiClient(credentials[0], credentials[1])
+instagrApiClient.LikeProfilesFromFile(10, 1)
